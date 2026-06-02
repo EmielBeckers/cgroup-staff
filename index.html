@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Waarom jouw werk ertoe doet — C.Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #0D1F2D;
+    --gold:   #C9A84C;
+    --gold2:  #E8D08A;
+    --cream:  #FAF6EE;
+    --warm:   #F2EBD9;
+    --text:   #1A1A1A;
+    --sub:    #6A6258;
+    --white:  #FFFFFF;
+    --emp1:   #1A5276;
+    --emp2:   #2E86C1;
+    --emp3:   #A9CCE3;
+    --cust1:  #5B2C6F;
+    --cust2:  #8E44AD;
+    --cust3:  #C39BD3;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 28px 56px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 110%, rgba(201,168,76,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 10% 20%, rgba(201,168,76,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s ease forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 9vw, 56px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s ease forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold2);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    max-width: 320px;
+    margin: 0 auto 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s ease forwards;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    animation: fadeIn 1s 1.4s ease forwards;
+  }
+
+  .hero-scroll span {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 64px 24px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 7vw, 36px);
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  h2 em { font-style: italic; color: var(--gold); }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: 15.5px;
+    font-weight: 300;
+    color: #3A3530;
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+
+  p strong { font-weight: 500; color: var(--navy); }
+
+  .gold-line {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  /* ── OPENING SCENE ── */
+  .scene {
+    background: var(--navy);
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .scene-inner {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 64px 28px;
+  }
+
+  .scene-inner p {
+    color: rgba(255,255,255,0.75);
+    font-size: 17px;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    line-height: 1.8;
+  }
+
+  .scene-inner p strong {
+    color: var(--gold2);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── PYRAMID SECTION ── */
+  .pyramid-section {
+    background: var(--white);
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .pyramid-section-inner {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 64px 24px;
+  }
+
+  /* Customer pyramid visual */
+  .pyramid-visual {
+    margin: 36px 0 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .pyr-tier {
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.15s;
+    position: relative;
+  }
+
+  .pyr-tier:active { transform: scale(0.98); }
+
+  .pyr-tier.tier-3 { width: 100%; background: var(--cust3); }
+  .pyr-tier.tier-2 { width: 74%; background: var(--cust2); }
+  .pyr-tier.tier-1 { width: 46%; background: var(--cust1); }
+
+  .tier-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    letter-spacing: 0.5px;
+  }
+
+  .tier-tagline {
+    font-size: 10.5px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    margin-top: 1px;
+  }
+
+  .tier-3 .tier-name { color: var(--navy); }
+  .tier-3 .tier-tagline { color: rgba(20,30,50,0.65); }
+
+  .tier-expand {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: var(--warm);
+    border-radius: 0 0 6px 6px;
+    width: 100%;
+  }
+
+  .tier-expand.open { max-height: 300px; }
+
+  .tier-expand-inner {
+    padding: 16px 18px;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--sub);
+  }
+
+  .tier-expand-inner strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .pyramid-caption {
+    font-size: 11px;
+    color: var(--sub);
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* ── CARDS ── */
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 28px 0;
+  }
+
+  .card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 22px 20px;
+    border-left: 3px solid var(--gold);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  }
+
+  .card-num {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .card h3 {
+    font-size: 17px;
+    margin-bottom: 6px;
+  }
+
+  .card p {
+    font-size: 14.5px;
+    margin: 0;
+  }
+
+  /* ── STORY BLOCK ── */
+  .story {
+    background: var(--navy);
+    max-width: 100%;
+  }
+
+  .story-inner {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 64px 28px;
+  }
+
+  .story-inner .eyebrow { color: var(--gold); }
+  .story-inner h2 { color: var(--white); }
+  .story-inner p { color: rgba(255,255,255,0.7); }
+
+  .story-quote {
+    border-left: 2px solid var(--gold);
+    padding: 14px 20px;
+    margin: 28px 0;
+    background: rgba(201,168,76,0.08);
+    border-radius: 0 6px 6px 0;
+  }
+
+  .story-quote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--gold2);
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  /* ── LEVELS SECTION ── */
+  .levels {
+    background: var(--cream);
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .levels-inner {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 64px 24px;
+  }
+
+  .level-item {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 36px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .level-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .level-dot {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    margin-top: 2px;
+  }
+
+  .level-dot.lvl1 { background: var(--cust3); color: var(--navy); }
+  .level-dot.lvl2 { background: var(--cust2); }
+  .level-dot.lvl3 { background: var(--cust1); }
+
+  .level-text h3 { font-size: 18px; margin-bottom: 4px; }
+  .level-text p  { font-size: 14.5px; margin: 0; }
+
+  /* ── ACTIONS SECTION ── */
+  .actions {
+    background: var(--white);
+    max-width: 100%;
+  }
+
+  .actions-inner {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 64px 24px;
+  }
+
+  .action-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 28px 0;
+  }
+
+  .action-row {
+    background: var(--cream);
+    border-radius: 4px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: background 0.2s;
+  }
+
+  .action-row:hover { background: var(--warm); }
+
+  .action-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    line-height: 1;
+  }
+
+  .action-text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+
+  .action-text span {
+    font-size: 13.5px;
+    color: var(--sub);
+    line-height: 1.55;
+  }
+
+  /* ── CALLING SECTION ── */
+  .calling {
+    background: linear-gradient(160deg, var(--navy) 0%, #1a2f45 100%);
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .calling::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 100% 80% at 50% 100%, rgba(201,168,76,0.12) 0%, transparent 70%);
+  }
+
+  .calling-inner {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 64px 28px;
+    position: relative;
+  }
+
+  .calling-inner .eyebrow { color: var(--gold); }
+  .calling-inner h2 { color: var(--white); }
+  .calling-inner p { color: rgba(255,255,255,0.7); }
+
+  .spectrum {
+    display: flex;
+    gap: 3px;
+    margin: 28px 0 20px;
+  }
+
+  .spec-block {
+    flex: 1;
+    padding: 18px 10px;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .spec-block .spec-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .spec-block .spec-body {
+    font-size: 11.5px;
+    line-height: 1.5;
+    opacity: 0.8;
+  }
+
+  .spec-job    { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); }
+  .spec-career { background: rgba(46,134,193,0.2);  color: rgba(255,255,255,0.7); }
+  .spec-calling { background: rgba(201,168,76,0.2); color: var(--gold2); }
+
+  .calling-message {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 8px;
+    padding: 22px 20px;
+    margin-top: 28px;
+  }
+
+  .calling-message p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--gold2);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: var(--cream);
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .closing-inner {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 64px 28px 80px;
+  }
+
+  .closing-inner h2 { text-align: center; }
+
+  .big-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 6vw, 30px);
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.45;
+    margin: 32px 0;
+    padding: 0 8px;
+  }
+
+  .big-quote span { color: var(--gold); }
+
+  .cgroup-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sub);
+    margin-top: 40px;
+  }
+
+  /* ── STICKY HEADER ── */
+  .sticky-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13,31,45,0.97);
+    backdrop-filter: blur(8px);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .sticky-nav.visible { transform: translateY(0); }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  /* ── PROGRESS BAR ── */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    background: var(--gold);
+    z-index: 200;
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ── DIVIDER ── */
+  .wavy-divider {
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .wavy-divider svg { display: block; }
+
+  /* ── HIGHLIGHT TEXT ── */
+  .highlight {
+    background: linear-gradient(120deg, rgba(201,168,76,0.25) 0%, rgba(201,168,76,0.1) 100%);
+    border-radius: 3px;
+    padding: 1px 4px;
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  /* ── SCROLL FADE IN ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="sticky-nav" id="stickyNav">
+  <div class="nav-logo">C.<span>Group</span></div>
+  <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4);">Voor ons team</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">C.Group — Voor ons team</p>
+  <h1 class="hero-title">Jij creëert<br><em>onvergetelijke</em><br>momenten</h1>
+  <p class="hero-sub">Waarom jouw werk veel meer is dan een taak, een shift of een functie.</p>
+  <div class="hero-scroll">
+    <span>Lees verder</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- OPENING SCENE -->
+<div class="scene">
+  <div class="scene-inner fade-in">
+    <p>Stel je voor: een koppel zit aan tafel. Het is hun trouwdag. Ze hadden dit restaurant gekozen zonder echt te weten waarom — iets trok hen aan. De avond begint gewoon. Maar dan…<br><br>
+    <strong>Jij herinnert je dat ze het vorige keer over die speciale wijn hadden. Je brengt hem zonder dat ze erom vragen.</strong><br><br>
+    Ze kijken elkaar aan. Dat moment — dat kleine, stille moment — wordt een herinnering die ze hun hele leven meedragen.</p>
+  </div>
+</div>
+
+<!-- WHY IT MATTERS -->
+<section class="fade-in">
+  <div class="eyebrow">Het grote plaatje</div>
+  <h2>Jij verkoopt geen eten.<br>Jij verkoopt <em>herinneringen</em>.</h2>
+  <div class="gold-line"></div>
+  <p>Chip Conley, één van de meest gerespecteerde hoteliers ter wereld, ontdekte iets dat de meeste bedrijven nooit snappen: mensen komen niet voor het product. Ze komen voor hoe ze zich voelen tijdens — en lang ná — het bezoek.</p>
+  <p>Een schoon bord. Een correcte bestelling. Een vriendelijk onthaal. Dat is het minimum. Dat is wat verwacht wordt. <strong>Maar het verschil tussen een restaurant dat men vergeet en één dat men voor altijd onthoudt? Dat ben jij.</strong></p>
+</section>
+
+<!-- PYRAMID -->
+<div class="pyramid-section">
+  <div class="pyramid-section-inner fade-in">
+    <div class="eyebrow">De drie niveaus</div>
+    <h2>Hoe een gast een avond <em>ervaart</em></h2>
+    <div class="gold-line"></div>
+    <p>Elke gast doorloopt drie niveaus van beleving. De meeste restaurants stoppen bij het eerste niveau. <strong>Wij mikken op het derde.</strong></p>
+    <p style="font-size:13px; color:var(--sub); font-style:italic;">Tik op een niveau om meer te lezen.</p>
+
+    <div class="pyramid-visual">
+      <!-- Tier 1 top = transformation -->
+      <div class="pyr-tier tier-1" onclick="toggleTier('tier1')">
+        <div class="tier-name">✦ Transformatie</div>
+        <div class="tier-tagline">De gast voelt zich anders</div>
+      </div>
+      <div class="tier-expand" id="tier1">
+        <div class="tier-expand-inner">
+          <strong>Het hoogste niveau — en het zeldzaamste.</strong>
+          De gast vertrekt met iets wat ze niet konden benoemen voor ze binnenkwamen. Een gevoel van vreugde, verbinding, ontsnapping. Ze vertellen het aan iedereen. Ze komen terug. Dit is wat loyaliteit schept — en dit is wat jij kunt creëren met kleine, bewuste handelingen.
+        </div>
+      </div>
+
+      <div class="pyr-tier tier-2" onclick="toggleTier('tier2')">
+        <div class="tier-name">Erkend & gezien worden</div>
+        <div class="tier-tagline">De gast voelt zich gekend</div>
+      </div>
+      <div class="tier-expand" id="tier2">
+        <div class="tier-expand-inner">
+          <strong>Hier begint het verschil.</strong>
+          De gast voelt dat ze niet zomaar een tafelgetal zijn. Iemand onthoudt hun naam. Iemand merkt op dat ze vandaag iets te vieren hebben. Iemand vraagt hoe het gaat — en meent het. Dit niveau kost geen geld. Het kost alleen aandacht.
+        </div>
+      </div>
+
+      <div class="pyr-tier tier-3" onclick="toggleTier('tier3')">
+        <div class="tier-name">Verwachtingen ingelost</div>
+        <div class="tier-tagline">Het basisniveau — de drempel</div>
+      </div>
+      <div class="tier-expand" id="tier3">
+        <div class="tier-expand-inner">
+          <strong>Noodzakelijk, maar niet genoeg.</strong>
+          Schoon. Correct. Op tijd. Vriendelijk. Dit is wat gasten verwachten als ze de deur binnenstappen. Ze bedanken je er niet voor — maar ze straffen je wel als het ontbreekt. Dit is het fundament, niet het doel.
+        </div>
+      </div>
+    </div>
+    <p class="pyramid-caption">Tik op elk niveau voor meer uitleg</p>
+  </div>
+</div>
+
+<!-- THE GAP -->
+<section class="fade-in">
+  <div class="eyebrow">Het verschil</div>
+  <h2>Van correct naar <em>onvergetelijk</em></h2>
+  <div class="gold-line"></div>
+  <p>De meeste horecazaken doen correct hun werk. Ze zijn proper, vriendelijk, en op tijd. Maar gasten onthouden hen niet.</p>
+  <p><strong>Wat gasten onthouden, zijn momenten.</strong> Niet de kwaliteit van het vlees. Niet de kleur van de muren. Maar het gevoel dat iemand voor hen zorgde. Dat ze welkom waren. Dat die avond voor hén gemaakt leek.</p>
+  <p>En dat gevoel — dat creëer jij. Niet de keuken. Niet de eigenaar. <span class="highlight">Jij, in dat moment, met die gast.</span></p>
+</section>
+
+<!-- HOW TO DO IT -->
+<div class="levels">
+  <div class="levels-inner">
+    <div class="eyebrow fade-in">Hoe doe je dat?</div>
+    <h2 class="fade-in">Drie dingen die het <em>verschil</em> maken</h2>
+    <div class="gold-line fade-in"></div>
+
+    <div class="level-item" id="li1">
+      <div class="level-dot lvl1">1</div>
+      <div class="level-text">
+        <h3>Onthoud meer dan de bestelling</h3>
+        <p>Een naam. Een allergie die ze vorig bezoek noemden. Of gewoon: merken dat ze vandaag een beetje anders zijn. Gasten die zich <em>herinnerd</em> voelen, komen terug. Altijd.</p>
+      </div>
+    </div>
+
+    <div class="level-item" id="li2">
+      <div class="level-dot lvl2">2</div>
+      <div class="level-text">
+        <h3>Anticipeer — vraag je niet af, doe het</h3>
+        <p>Water bijvullen voor het leeg is. Een tafellaken vervangen voor de gast er iets van zegt. Het kind zien dat wacht. De beste service is de service die je niet ziet — omdat ze er al was voor ze nodig was.</p>
+      </div>
+    </div>
+
+    <div class="level-item" id="li3">
+      <div class="level-dot lvl3">3</div>
+      <div class="level-text">
+        <h3>Laat een indruk achter</h3>
+        <p>Het laatste moment is het sterkste. Hoe jij afscheid neemt, bepaalt het gevoel waarmee de gast vertrekt — en het verhaal dat ze later vertellen. Een oprechte, warme afsluiting is jouw handtekening.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIONS -->
+<div class="actions">
+  <div class="actions-inner fade-in">
+    <div class="eyebrow">Praktisch</div>
+    <h2>Kleine acties,<br><em>grote impact</em></h2>
+    <div class="gold-line"></div>
+    <p>Je hoeft geen grootse gebaren te maken. De krachtigste momenten zijn klein — maar bewust.</p>
+
+    <div class="action-grid">
+      <div class="action-row">
+        <div class="action-icon">👁️</div>
+        <div class="action-text">
+          <strong>Kijk echt naar je gast</strong>
+          <span>Niet door hen heen. Een seconde echte aandacht voelt anders dan een minuut onverschilligheid.</span>
+        </div>
+      </div>
+      <div class="action-row">
+        <div class="action-icon">📝</div>
+        <div class="action-text">
+          <strong>Onthoud één detail per tafel</strong>
+          <span>Iets wat ze zeggen. Hun naam. Waarvoor ze komen. Dat ene detail kan een avond veranderen.</span>
+        </div>
+      </div>
+      <div class="action-row">
+        <div class="action-icon">⚡</div>
+        <div class="action-text">
+          <strong>Los het op voor de gast het vraagt</strong>
+          <span>Als je iets ziet dat beter kan, doe het. Je hebt geen toestemming nodig om zorg te tonen.</span>
+        </div>
+      </div>
+      <div class="action-row">
+        <div class="action-icon">💬</div>
+        <div class="action-text">
+          <strong>Praat met de gast, niet tégen hen</strong>
+          <span>Een echte vraag. Een echt antwoord. Niet het script — de persoon.</span>
+        </div>
+      </div>
+      <div class="action-row">
+        <div class="action-icon">✨</div>
+        <div class="action-text">
+          <strong>Sluit af met warmte</strong>
+          <span>Niet "alsjeblieft" terwijl je al wegloopt. Een moment van oprechte afsluiting maakt de avond compleet.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CALLING SECTION -->
+<div class="calling">
+  <div class="calling-inner fade-in">
+    <div class="eyebrow">Jouw werk</div>
+    <h2>Meer dan een job.<br>Een <em>roeping</em>.</h2>
+    <div class="gold-line" style="background:var(--gold);"></div>
+    <p>Hoe kijk jij naar jouw werk? Er zijn drie manieren.</p>
+
+    <div class="spectrum">
+      <div class="spec-block spec-job">
+        <span class="spec-title">Job</span>
+        <span class="spec-body">Tijd voor geld. Shift voorbij, gedaan.</span>
+      </div>
+      <div class="spec-block spec-career">
+        <span class="spec-title">Carrière</span>
+        <span class="spec-body">Groeien, leren, vooruit.</span>
+      </div>
+      <div class="spec-block spec-calling">
+        <span class="spec-title">Roeping ✦</span>
+        <span class="spec-body">Het werk betekent iets. Elke dag.</span>
+      </div>
+    </div>
+
+    <p>De beste mensen in hospitality — degenen die gasten echt raken — beleven hun werk als een roeping. Niet omdat ze dat moeten. Maar omdat ze snappen wat ze eigenlijk doen.</p>
+    <p>Ze verkopen geen borden eten. Ze geven mensen een plek om thuis te komen. Ze maken ruimte voor de mooiste momenten van iemands leven.</p>
+
+    <div class="calling-message">
+      <p>"De mensen die het verschil maken in hospitality zijn niet de mensen met de meeste ervaring — het zijn de mensen die écht willen dat de gast zich goed voelt."</p>
+    </div>
+  </div>
+</div>
+
+<!-- STORY BLOCK -->
+<div class="story">
+  <div class="story-inner fade-in">
+    <div class="eyebrow">Onze visie</div>
+    <h2>Wat wij bouwen<br>bij C.Group</h2>
+    <div class="gold-line"></div>
+    <p>We bouwen geen restaurants. We bouwen plaatsen waar mensen de mooiste momenten van hun leven beleven — verjaardagen, eerste dates, zakelijke doorbraken, stille avonden die onverwacht bijzonder worden.</p>
+
+    <div class="story-quote">
+      <p>Hospitality zit in ons DNA.<br>Het heruitvinden ervan is onze ambitie.</p>
+    </div>
+
+    <p>Dat is alleen mogelijk dankzij mensen zoals jij — die begrijpen dat hun werk niet stopt bij het correcte. Die de extra stap zetten. Die een gast zien als een mens, niet als een bestelling.</p>
+    <p style="color:rgba(255,255,255,0.5); font-size:14px;">Elke avond is een kans. Elke gast is een verhaal dat nog geschreven moet worden. <strong style="color:var(--gold2);">Jij bent de auteur.</strong></p>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="closing-inner fade-in">
+    <div class="eyebrow">Tot slot</div>
+    <h2>Vergeet dit niet</h2>
+    <div class="gold-line" style="margin: 0 auto 28px;"></div>
+    <p>Op het einde van een lange shift, wanneer je moe bent en de tafels zijn leeggelopen — onthoud dan dit:</p>
+
+    <div class="big-quote">
+      "Ergens vanavond zit iemand thuis en vertelt over <span>jou</span>. Over dat moment. Over het gevoel."
+    </div>
+
+    <p>Dat is jouw werk. Dat is waarom het telt.</p>
+    <p style="font-size:15px; color:var(--sub);">Dank je wel dat je deel uitmaakt van C.Group.</p>
+
+    <div class="cgroup-tag">C.Group — Hospitality Matters</div>
+  </div>
+</div>
+
+<script>
+  // Pyramid tier toggle
+  function toggleTier(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('open');
+  }
+
+  // Sticky nav
+  const stickyNav = document.getElementById('stickyNav');
+  const progressBar = document.getElementById('progressBar');
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = (scrollY / docH) * 100;
+
+    progressBar.style.width = pct + '%';
+    stickyNav.classList.toggle('visible', scrollY > 80);
+  }, { passive: true });
+
+  // Intersection observer for fade-ins
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in, .level-item').forEach(el => observer.observe(el));
+
+  // Stagger level items
+  ['li1','li2','li3'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (el) el.style.transitionDelay = (i * 0.15) + 's';
+  });
+</script>
+</body>
+</html>
